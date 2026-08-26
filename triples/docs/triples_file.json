@@ -1,0 +1,29 @@
+ {  
+
+             "file":{ 
+                "type": "function",
+                "function": {
+                    "name": "file",
+                    "example":"file read mylog.log;", 
+                    "description": "Readas a file into memory.",
+                    "parameters": {"type":{ "type": "string", "values":["read", "close" ]} ,
+                                    "file":{ "type": "string", "values":[]}
+                                   } ,
+                    "examples":{ 
+                            "triples":"file read mylog.log", 
+                            "verbal" :"Robot file read mylog" ,
+                            "router" :[{"v":"control", "s":"me", "o":"sleep", 
+                                         "call":{"v":"intiate" , "o":"sleep", "s":""}} ]
+                             },
+                    "solutions":{"power":{"low":"sleep"}, 
+                                 "sound":{"unknown":"scan"},
+                                 "reasoning":{"fails":"reflexion"},
+                                 "security":{"breech":"security"} 
+                               },
+                    "required": ["type"], 
+                    "tool":true
+                } 
+             } 
+}
+ 
+  

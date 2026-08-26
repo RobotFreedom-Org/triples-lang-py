@@ -1,0 +1,42 @@
+  {  
+     
+         "scan":{ 
+            "type": "function",
+            "function": {
+                "name": "scan",
+                "description": "Scan for networks or devices.",
+                "example": "scan ble;", 
+                "parameters": { "protocol": {"type": "string", "values":["wifi", "ble","serial", "environment"]}}, 
+                "required": ["protocol"], 
+                "tool":true
+            }
+         } ,  
+         "send":{ 
+            "type": "function",
+            "function": {
+                "name": "send",
+                "description": "Sends a message to a specified networked robot or device",
+                "example": "send number_2 'hello';",  
+                "parameters": {  "type": {"type": "string", "values":["network","ble"]}, 
+                                 "resipient": {"type": "string", "values":[ ]},  
+                                 "message": {"type": "string", "values":[ ]}
+                                }, 
+                "required": ["type", "resipient" , "message" ], 
+                "tool":true
+            } 
+         }   ,  
+         "check":{ 
+            "type": "function",
+            "function": {
+                "name": "check",
+                "description": "check a message to a specified networked robot or device",
+                "example": "check network number_2 'hello';",  
+                "parameters": {  "type": {"type": "string", "values":["network","ble"]}, 
+                                 "resipient": {"type": "string", "values":[ ]},  
+                                 "message": {"type": "string", "values":[ ]} 
+                                }, 
+                "required": ["type", "resipient" , "message" ], 
+                "tool":true
+            } 
+         }   
+}

@@ -1,0 +1,29 @@
+  {  
+   
+         "flow":{ 
+            "type": "function",
+            "function": {
+                "name": "flow",
+                "category": "conditionals",
+                "description": "runs a subsequent block of command only if condition met", 
+                "example": "set v2 0; set v2 0; flow if start;  equal v1 v2; execute browser; flow if end;",  
+                "parameters": { "logic": {"type": "float", "values":["if", "also", "else"]},  
+                                "action": {"type": "string", "values":["start", "end"]}, 
+                                "consequent": {"type": "float", "values":[""]}
+                              }, 
+                "required": ["action"  ], 
+                "tool":true, 
+                "examples":{ 
+                        "triples":"set a 0;  set b 0;  flow if start; equal a b; launch browser;  flow if end;", 
+                        "verbal" :"Robot query weather san francisco" ,
+                        "router" :[{"v":"", "s":"", "o":"", 
+                                    "call":{"v":"" , "o":"", "s":""}} ]
+                         },
+                "solutions":{"information":{ }  
+                       }
+            }     
+          }     
+}
+ 
+ 
+  

@@ -1,0 +1,68 @@
+  { 
+  
+         "analysis":{ 
+            "type": "function",
+            "function": {
+                "name": "analysis",
+                "description": "Does analysis on sensor readings",
+                "category": "sensors",
+                "example": "analysis mean touch;",
+                "parameters": { "method": {"type": "string", "values":["max", "min", "mean", "trend", "predicted", "summarize", "correlate", "relationship"]},
+                                "sense":  {"type": "string", "values":["all", "touch","noise","balence", "tempature"]}  },
+                "required": [], 
+                "tool":true,
+                "examples":{ 
+                        "triples":"analysis touch mean|scr;", 
+                        "verbal" :"Robot analysis touch" ,
+                        "router" :[{"v":"analysis", "s":"mood", "o":"scr", 
+                                    "call":{"v":"analysis" , "o":"touch", "s":"scr"}} ]
+                         },
+                "solutions":{"sensor":{ "analysis":"scr"} 
+                        }
+                } 
+         } , 
+         "readings":{ 
+            "type": "function",
+            "function": {
+                "name": "readings",
+                "description": "Returns sensor input",
+                "category": "sensors",
+                "example": "reading;",
+                "parameters": { "sensor": {"type": "string", "values":[]} },
+                "required": [], 
+                "tool":true,
+                "examples":{ 
+                        "triples":"reading", 
+                        "verbal" :"Robot reading" ,
+                        "router" :[{"v":"reading", "s":"", "o":"", 
+                                    "call":{"v":"reading" , "o":"", "s":""}} ]
+                         },
+                "solutions":{"sensor":{ "reading":""} 
+                           }
+                } 
+         } ,    
+         "monitor":{ 
+            "type": "function",
+            "function": {
+                "name": "monitor",
+                "description": "starts monitoring and logging",
+                "example": "sim touch", 
+                "parameters": { "stimuli": {"type": "string", "values":["light","noise","touch","temparture"]}}, 
+                "required": ["stimuli"], 
+                "tool":true
+            }
+         } ,   
+         "simulate":{ 
+            "type": "function",
+            "function": {
+                "name": "simulate",
+                "description": "simulates a stimuli",
+                "example": "simulate touch", 
+                "parameters": { "stimuli": {"type": "string", "values":["light","noise","touch","temparture"]}}, 
+                "required": ["stimuli"], 
+                "tool":true
+            }
+         }   
+}
+ 
+   

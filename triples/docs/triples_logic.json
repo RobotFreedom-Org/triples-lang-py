@@ -1,0 +1,102 @@
+  {  
+   
+         "different":{ 
+            "type": "function",
+            "function": {
+                "name": "different",
+                "category": "logic",
+                "description": "Deterimines if two value are different.",
+                "example": "set v1 4; set v2 3; different v1 v2;",  
+                "expected_results": "0",  
+                "parameters": { "antecedent": {"type": "float", "values":[""]},  
+                                "consequent": {"type": "float", "values":[""]}
+                              }, 
+                "required": ["antecedent","consequent" ],  
+                "examples":{ 
+                        "triples":"different v1 v2;", 
+                        "verbal" :"Robot different v1 v2" ,
+                        "router" :[{"v":"different", "s":"v1", "o":"v2", 
+                                     "call":{"v":"different" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"logic":{"different":"values"},  
+                             "logic-2":{"not_equal":"values"}
+                           },
+                "tool":true
+            }
+         } ,
+
+                  "equal":{ 
+                     "type": "function",
+                     "function": {
+                         "name": "equal",
+                         "category": "logic",
+                         "description": "Deterimines if two value are equal.",
+                         "example": "set v1 4; set v2 3; equal v1 v2;",  
+                         "expected_results": "0",  
+                         "parameters": { "antecedent": {"type": "float", "values":[""]},  
+                                         "consequent": {"type": "float", "values":[""]} 
+                                       }, 
+                         "required": ["antecedent","consequent" ],  
+                         "examples":{ 
+                                 "triples":"equal v1 v2;", 
+                                 "verbal" :"Robot equal v1 v2" ,
+                                 "router" :[{"v":"equal", "s":"v1", "o":"v2", 
+                                              "call":{"v":"equal" , "o":"v1", "s":"v1"}} ]
+                                  },
+                         "solutions":{"logic":{"equal":"values"},  
+                                      "logic2":{"not_equal":"values"}
+                                    },
+                         "tool":true
+                     }
+                  } ,
+         "more":{ 
+            "type": "function",
+            "function": {
+                "name": "more",
+                "category": "logic",
+                "description": "Deterimines if value 1 is greater than value 2",
+                "example": "set v1 4; set v2 3;more v1 v2;",  
+                "expected_results": "0",  
+                "parameters": { "antecedent": {"type": "float", "values":[""]},  
+                                "consequent": {"type": "float", "values":[""]}
+                              }, 
+                "required": ["antecedent"  , "consequent" ], 
+                "examples":{ 
+                        "triples":"more v1 v2;", 
+                        "verbal" :"Robot greater than v1 v2" ,
+                        "router" :[{"v":"more", "s":"v1", "o":"v2", 
+                                     "call":{"v":"more" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"logic":{"more":"values"}
+                           },
+                "tool":true
+            } 
+         } , 
+         "less":{ 
+            "type": "function",
+            "function": {
+                "name": "less",
+                "category": "logic", 
+                "description": "Deterimines if value 1 is lesser than value 2",
+                "example": "set v1 4; set v2 3;less v1 v2;",  
+                "expected_results": "0",  
+                "parameters": { "antecedent": {"type": "float", "values":[""]},  
+                                "consequent": {"type": "float", "values":[""]} 
+                              }, 
+                "required": ["antecedent"  , "consequent" ], 
+                "examples":{ 
+                        "triples":"less v1 v2;", 
+                        "verbal" :"Robot less than v1 v2" ,
+                        "router" :[{"v":"less", "s":"v1", "o":"v2", 
+                                     "call":{"v":"less" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"logic":{"less":"values"}  
+                           },
+                "tool":true
+            } 
+         } 
+}
+ 
+ 
+ 
+     

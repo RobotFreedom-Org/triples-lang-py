@@ -1,0 +1,26 @@
+  { 
+         "join":{ 
+            "type": "function",
+            "function": {
+                "name": "join",
+                "category": "string",
+                "description": "Adds two strings together.",
+                "example": "set v1 hello; set worl 4; join v1 v2;",  
+                "expected_results": "helloworld",  
+                "parameters": { "value_1": {"type": "string", "values":[""]},  
+                                "value_2": {"type": "string", "values":[""]}
+                              }, 
+                "required": ["value_1", "value_2"  ],  
+                "examples":{ 
+                        "triples":"join v1 v2;", 
+                        "verbal" :"Robot join v1 v2" ,
+                        "router" :[{"v":"join", "s":"v1", "o":"v2", 
+                                     "call":{"v":"join" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"string":{"join":"values"}
+                           },
+                "tool":true
+            }
+         } 
+}
+  

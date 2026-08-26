@@ -1,0 +1,8 @@
+{"prompt": "what time is it", "function": "time", "scores": 0.82}
+{"prompt": "what date is it?", "function": "date", "scores": 0.93}      
+{"prompt": "how do you feel", "function": "access", "s": "context" , "o":"emotion", "scores": 0.97}  
+{"prompt": "what is your mood", "function": "access", "s": "context" , "o":"emotion", "scores": 0.97}  
+{"prompt": "what is your objective", "function": "access", "s": "context" , "o":"objective", "scores": 0.97}  
+{"prompt": "what is your strategy", "function": "access", "s": "context" , "o":"strategy", "scores": 0.97}  
+{"prompt": "what is your motivation", "function": "access", "s": "context" , "o":"motivation", "scores": 0.97}  
+{"prompt": "what does turtle mean", "function": "define", "split_l":"does" , "split_r":"mean" ,"scores": 0.97}  

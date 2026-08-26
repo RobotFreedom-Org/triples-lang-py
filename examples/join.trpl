@@ -1,0 +1,3 @@
+set v1 hello;  
+set v2 world;  
+join v1 v2; 

@@ -1,0 +1,26 @@
+  { 
+    
+            "media":{ 
+            "type": "function",
+            "function": {
+                "name": "media",
+                "category": "media",
+                "description": "Shows images on primary screen ",
+                "example": "media show image->myimage.jpeg;",
+                "parameters": { "obj": {"type": "string", "values":["image", "graph"]}  ,
+                                "prompt": {"type": "string", "values":[]}},
+                "required": ["obj"] ,
+                "tool":true,
+                "examples":{ 
+                        "triples":"graph_edges mygraph stimuli_goal_factors->touch;", 
+                        "verbal" :"Robot graph_edges mygraph stimuli_goal_factors touch" ,
+                        "router" :[{"v":"graph", "s":"edges", "o":"", 
+                                    "call":{"v":"graph" , "o":"edges", "s":""}} ]
+                         },
+                             "solutions":{"graph":{ "edges":""}
+                        }
+                } 
+           }    
+
+}
+  

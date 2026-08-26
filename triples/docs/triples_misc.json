@@ -1,0 +1,46 @@
+  {  
+
+         "interact":{ 
+            "type": "function",
+            "function": {
+                "name": "interact",
+                "category": "resources",
+                "description": "runs a methods on a resource ", 
+                "example": "interact sockets;  sent; interact end;",  
+                "parameters": { "logic": {"type": "float", "values":["if", "also", "else"]},  
+                                "action": {"type": "string", "values":["start", "end"]}, 
+                                "consequent": {"type": "float", "values":[""]}
+                              }, 
+                "required": ["action"  ], 
+                "tool":true
+            }     
+          } ,  
+         "log":{ 
+            "type": "function",
+            "function": {
+                "name": "log",
+                "description": "Start log file.",
+                "example": "log error.log;",  
+                "parameters": {  "file_name": {"type": "string", "values":[ ]} }, 
+                "required": [ "file_name"], 
+                "tool":true
+            }
+         } , 
+         "reminder":{ 
+            "type": "function",
+            "function": {
+                "name": "reminder",
+                "description": "Sets a reminider in X seconds.",
+                "example": "reminder 120 eat;",  
+                "parameters": {  "seconds": {"type": "int", "values":[ ]}, 
+                                 "alert": {"type": "string", "values":[ ]} 
+                                }, 
+                "required": ["seconds"  ], 
+                "tool":true
+            }
+         }  
+}
+ 
+ 
+ 
+     

@@ -1,0 +1,172 @@
+  {    "decrement":{ 
+            "type": "function",
+            "function": {
+                "name": "decrement",
+                "category": "math",
+                "description": "increment a value  .",
+                "example": "set v1 4;   decrement v1;",  
+                "expected_results": "8",  
+                "parameters": { "value_1": {"type": "float", "values":[""]},  
+                                "value_2": {"type": "float", "values":[""]} 
+                              }, 
+                "required": ["value_1", "value_2"  ],  
+                "examples":{ 
+                        "triples":"decrement v1;", 
+                        "verbal" :"Robot decrement v1" ,
+                        "router" :[{"v":"decrement", "s":"v1", "o":"v2", 
+                                     "call":{"v":"decrement" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"math":{"add":"values"}  
+                           },
+                "tool":true
+            }
+         } , 
+         "increment":{ 
+            "type": "function",
+            "function": {
+                "name": "increment",
+                "category": "math",
+                "description": "increment a value  .",
+                "example": "set v1 4;   increment v1;",  
+                "expected_results": "8",  
+                "parameters": { "value_1": {"type": "float", "values":[""]},  
+                                "value_2": {"type": "float", "values":[""]}
+                              }, 
+                "required": ["value_1", "value_2"  ],  
+                "examples":{ 
+                        "triples":"increment v1;", 
+                        "verbal" :"Robot increment v1" ,
+                        "router" :[{"v":"increment", "s":"v1", "o":"v2", 
+                                     "call":{"v":"increment" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"math":{"add":"values"} 
+                           },
+                "tool":true
+            }
+         } ,
+         "add":{ 
+            "type": "function",
+            "function": {
+                "name": "add",
+                "category": "math",
+                "description": "Adds two value together.",
+                "example": "set v1 4; set v2 4; add v1 v2;",  
+                "expected_results": "8",  
+                "parameters": { "value_1": {"type": "float", "values":[""]},  
+                                "value_2": {"type": "float", "values":[""]}
+                              }, 
+                "required": ["value_1", "value_2"  ],  
+                "examples":{ 
+                        "triples":"add v1 v2;", 
+                        "verbal" :"Robot add v1 v2" ,
+                        "router" :[{"v":"add", "s":"v1", "o":"v2", 
+                                     "call":{"v":"add" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"math":{"add":"values"} 
+                           },
+                "tool":true
+            }
+         } ,
+         "substract":{ 
+            "type": "function",
+            "function": {
+                "name": "substract",
+                "category": "math",
+                "description": "Subtracts two value together.",
+                "example": "set v1 4; set v2 4; substract v1 v2;",  
+                "expected_results": "0",  
+                "parameters": { "value_1": {"type": "float", "values":[""]},  
+                                "value_2": {"type": "float", "values":[""]} 
+                              }, 
+                "required": ["value_1", "value_2"  ],  
+                "examples":{ 
+                        "triples":"substract v1 v2;", 
+                        "verbal" :"Robot substract v1 v2" ,
+                        "router" :[{"v":"substract", "s":"v1", "o":"v2", 
+                                     "call":{"v":"substract" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"math":{"substract":"values"}
+                           },
+                "tool":true
+            }
+         } ,
+         "multiply":{ 
+            "type": "function",
+            "function": {
+                "name": "multiply",
+                "category": "math",
+                "description": "multiplies two value together.",
+                "example": "set v1 4; set v2 4; multiply v1 v2;",  
+                "expected_results": "16",  
+                "parameters": { "value_1": {"type": "float", "values":[""]},  
+                                "value_2": {"type": "float", "values":[""]}
+                              }, 
+                "required": ["value_1", "value_2"  ],  
+                "examples":{ 
+                        "triples":"multiply v1 v2;", 
+                        "verbal" :"Robot multiply v1 v2" ,
+                        "router" :[{"v":"multiply", "s":"v1", "o":"v2", 
+                                     "call":{"v":"multiply" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"math":{"multiply":"values"} 
+                           },
+                "tool":true
+            }
+         } ,
+         "divide":{ 
+            "type": "function",
+            "function": {
+                "name": "divide",
+                "category": "math",
+                "description": "Devides two value together.",
+                "example": "set v1 4; set v2 4; divide v1 v2;",  
+                "expected_results": "1",  
+                "parameters": { "value_1": {"type": "float", "values":[""]},  
+                                "value_2": {"type": "float", "values":[""]} 
+                              }, 
+                "required": ["value_1", "value_2"  ],  
+                "examples":{ 
+                        "triples":"divide v1 v2;", 
+                        "verbal" :"Robot divide v1 v2" ,
+                        "router" :[{"v":"divide", "s":"v1", "o":"v2", 
+                                     "call":{"v":"divide" , "o":"v1", "s":"v1"}} ]
+                         },
+                "solutions":{"math":{"divide":"values"} 
+                           },
+                "tool":true
+            }
+         } ,
+         "calculate":{ 
+            "type": "function",
+            "function": {
+                "name": "calculate",
+                "description": "Calculator",
+                "category": "math",
+                "example": "calculate 1+3;",
+                "expected_results": "4",
+                "parameters": {"equation": {"type": "string", "values":[]}},
+                "required": ["equation"] ,
+                "tool":true,
+                "examples":{ 
+                        "triples":"calculate 1-3;", 
+                        "verbal" :"Robot calculate 1 minus 3" ,
+                        "router" :[{"v":"information", "s":"settings", "o":"personality", 
+                                    "call":{"v":"settings" , "o":"get", "s":"personality"}} ]
+                         },
+                "solutions":{"settings":{ "system":"date"}
+                           }
+              }
+         }, 
+         "roll":{ 
+            "type": "function",
+            "function": {
+                "name": "roll",
+                "description": "generates random number based on dice",
+                "example": "roll 6d;", 
+                "parameters": { "dice": {"type": "string", "values":[]}}, 
+                "required": ["dice"], 
+                "tool":true
+            }
+         }    
+ 
+} 

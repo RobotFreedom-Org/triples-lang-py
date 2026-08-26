@@ -1,0 +1,44 @@
+  {  
+             "create":{ 
+            "type": "function",
+            "function": {
+                "name": "create",
+                "category": "system",
+                "description": "Creates a user function.",
+                "example": "create function my_function;",
+                "parameters": {"name": {"type": "string", "values":[]}},
+                "required": ["name"] ,
+                "tool":false,
+                "examples":{ 
+                        "triples":"create function my_function;", 
+                        "verbal" :"Robot function my_function" ,
+                        "router" :[{"v":"my_function", "s":"start", "o":"", 
+                                    "call":{"v":"exec" , "o":"filename", "s":""}} ]
+                         },
+                "solutions":{"system":{ "program":"start"}
+                           }
+              }
+         },  
+
+         "execute":{ 
+            "type": "function",
+            "function": {
+                "name": "execute",
+                "category": "system",
+                "description": "Executes a user created function.",
+                "example": "execute my_function;",
+                "parameters": {"cmd": {"type": "string", "values":[]}},
+                "required": ["cmd"] ,
+                "tool":false,
+                "examples":{ 
+                        "triples":"execute myscript.sh ;", 
+                        "verbal" :"Robot execute myscript dot sh" ,
+                        "router" :[{"v":"program", "s":"start", "o":"", 
+                                    "call":{"v":"exec" , "o":"filename", "s":""}} ]
+                         },
+                "solutions":{"system":{ "program":"start"}  
+                           }
+              }
+         }
+}
+  

@@ -1,0 +1,47 @@
+  { 
+         "temporal":{ 
+            "type": "function",
+            "function": {
+                "name": "temporal",
+                "category": "temporal",
+                "description": "Perfroms opperations on date times",
+                "example": "temporal difference datestart->dataend;",
+                "parameters": { "prompt": {"type": "string", "values":["difference", "pause"]}  },
+                "required": ["prompt"] ,
+                "tool":true,
+                "examples":{ 
+                        "triples":"temporal difference datestart->dataend;", 
+                        "verbal" :"Robot graph_edges mygraph stimuli_goal_factors touch" ,
+                        "router" :[{"v":"graph", "s":"edges", "o":"", 
+                                    "call":{"v":"graph" , "o":"edges", "s":""}} ]
+                         },
+                "solutions":{"graph":{ "edges":""}
+                           }
+                } 
+         } ,    
+         "time":{ 
+            "type": "function",
+            "function": {
+                "name": "time",
+                "description": "Get current time.",
+                "example": "time;", 
+                "parameters": { }, 
+                "required": [ ], 
+                "tool":true
+            }
+         } , 
+         "date":{ 
+            "type": "function",
+            "function": {
+                "name": "date",
+                "description": "Get current date.",
+                "example": "date;", 
+                "parameters": { }, 
+                "required": [ ], 
+                "tool":true
+            }
+         }  
+}
+ 
+ 
+  

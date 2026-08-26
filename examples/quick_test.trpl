@@ -1,0 +1,4 @@
+set v3 whence roll 10d; 
+echo v3;
+set v4 whence join "i just rolled a " v3  ;
+echo v4; 

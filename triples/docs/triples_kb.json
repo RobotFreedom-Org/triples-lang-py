@@ -1,0 +1,75 @@
+{
+         "knowledge":{ 
+            "type": "function",
+            "function": {
+                "name": "knowledge",
+                "category": "types",
+                "description": "Add knowledge to RDF knowledge base", 
+                "example": "knowledge start; 'i', 'iike' 'triples' knowledge end;",  
+                "parameters": { "logic": {"type": "float", "values":["if", "also", "else"]},  
+                                 "action": {"type": "string", "values":["start", "end"]}  
+                              }, 
+                "required": ["action"], 
+                "tool":true, 
+                "examples":{ 
+                        "triples":"knowledge start; 'i', 'iike' 'triples' knowledge end;", 
+                        "verbal" :"Create a structucture" ,
+                        "router" :[{"v":"", "s":"", "o":"", 
+                                    "call":{"v":"" , "o":"", "s":""}} ]
+                         },
+                "solutions":{"information":{ }  
+                  }
+            }     
+          } ,
+          "access":{
+               "type": "function",
+               "function": {
+                "name": "access",
+                "chat":true,
+                "tool":true,
+                "description": "check  internal metrics such as mood",
+                "category": "information",
+                "example": "access current emotion;",
+                "expected_output":"sunny",
+                "parameters": {"info": {"type": "string",
+                                         "values":["weather", "news", "time", 
+                                                   "date", "location", "events"]},
+                               "location": {"type": "string",
+                                              "values":[""]}
+                              }, 
+                "required": ["info"] ,
+                "examples":{ 
+                        "triples":"query weather san francisco;", 
+                        "verbal" :"Robot query weather san francisco" ,
+                        "router" :[{"v":"information", "s":"location", "o":"weather", 
+                                     "call":{"v":"intiate" , "o":"reflexion", "s":""}} ]
+                         },
+                "solutions":{"information":{"time":"time", 
+                                            "date":"date", 
+                                            "location":"date"} 
+                           }
+                   }
+               }, 
+                "define":{ 
+                           "type": "function",
+                           "function": {
+                               "name": "define",
+                               "description": "define location new york.",
+                               "category": "knowledge",
+                               "example": "define turtle;",
+                               "parameters": {  "readings":  {"type": "string", "values":["word"]}  },
+                               "required": [], 
+                               "tool":true,
+                               "examples":{ 
+                                       "triples":"define turtle;", 
+                                       "verbal" :"Robot define turtle; " ,
+                                       "router" :[{"v":"values", "s":"sensor", "o":"touch", 
+                                                   "call":{"v":"summarize" , "o":"touch", "s":""}} ]
+                                        },
+                               "solutions":{"sensor":{ "readings":"summary"}
+                                          }
+                               }
+                        }   
+}
+ 
+     

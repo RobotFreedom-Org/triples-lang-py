@@ -1,0 +1,153 @@
+ {
+         "echo":{ 
+            "type": "function",
+            "function": {
+                "name": "echo",
+                "description": "Creates a file with passed data",
+                "category": "core",
+                "example": "echo hello myscript.sh ;",
+                "parameters": {"text": {"type": "string", "values":[]}  ,
+                               "file": {"type": "string", "values":[]} },
+                "required": ["text"] ,
+                "tool":true,
+                "examples":{ 
+                        "triples":"echo hello myscript.sh ;", 
+                        "verbal" :"Robot echo hello myscript dot sh" ,
+                        "router" :[{"v":"data", "s":"storage", "o":"file", 
+                                    "call":{"v":"echo" , "o":"data", "s":"filename"}} ]
+                         },
+                "solutions":{"data":{ "storage":"file"} 
+                           }
+              }
+         },  
+         "list":{ 
+            "type": "function",
+            "function": {
+                "name": "list",
+                "description": "Lists in memoery varibles ",
+                "category": "core",
+                "example": "list  ;",
+                "parameters": {"text": {"type": "string", "values":[]}  ,
+                               "file": {"type": "string", "values":[]} },
+                "required": ["text"] ,
+                "tool":true,
+                "examples":{ 
+                        "triples":"list;", 
+                        "verbal" :"Robot list" ,
+                        "router" :[{"v":"list", "s":"", "o":"", 
+                                    "call":{"v":"echo" , "o":"data", "s":"filename"}} ]
+                         },
+                "solutions":{"data":{ "storage":"file"}  
+                           }
+              } 
+         },  
+         "run":{ 
+            "type": "function",
+            "function": {
+                "name": "run",
+                "description": "Runs a triples script.",
+                "example": "run myscript.trlp;", 
+                "parameters": { "script": {"type": "string", "values":[]}},  
+                 "required": ["script"],  
+                "tool":true
+            }
+         } , 
+
+         "get":{ 
+            "type": "function",
+            "function": {
+                "name": "do_get",
+                "category": "core",
+                "description": "Gets key nerves. key is a list than itertes",
+                "example": "set v1 2; get v1;",  
+                "parameters": { "key": {"type": "string", "values":[ ]} ,
+                                "param": {"type": "string", "values":[]} 
+                            }, 
+                "required": ["key"], 
+                "tool":true,
+                "examples":{ 
+                        "triples":"get a ;", 
+                        "verbal" :"Robot get a" ,
+                        "router" :[{"v":"get", "s":"data", "o":"reflexion", 
+                                     "call":{"v":"get" , "o":"", "s":""}} ]
+                         },
+                "solutions":{"get":{"memory":"value"}
+                           }
+            }
+         } , 
+         "set":{ 
+            "type": "function",
+            "function": {
+                "name": "do_set",
+                "category": "core",
+                "description": "Set key  value in nerves.",
+                "example": "set v1 20;",  
+                "parameters": { "key":   {"type": "string", "values":[]},
+                                "value": {"type": "string", "values":[]}  
+                              }, 
+                "required": ["key" ,"value" ], 
+                "examples":{ 
+                        "triples":"set a 10;", 
+                        "verbal" :"Robot set a 10" ,
+                        "router" :[{"v":"set", "s":"data", "o":"reflexion", 
+                                     "call":{"v":"get" , "o":"", "s":""}} ]
+                         },
+                "solutions":{"set":{"memory":"value"}},  
+                "tool":true
+            }
+         } ,  
+
+         "pop":{ 
+            "type": "function",
+            "function": {
+                "name": "pop",
+                "description": "Set key  value in nerves. if param is list then appends to list with key name.",
+                "example": "ltm set svo {'s':'', 'o':'','v':''};",  
+                "parameters": { "key":   {"type": "string", "values":[]},
+                                "value": {"type": "string", "values":[]}, 
+                                "param": {"type": "string", "values":[]}
+                              }, 
+                "required": ["key" ,"value" ], 
+                "tool":true
+            }
+         } ,  
+         "next":{ 
+            "type": "function",
+            "function": {
+                "name": "next",
+                "description": "Set key  value in nerves. if param is list then appends to list with key name.",
+                "example": "ltm set svo {'s':'', 'o':'','v':''};",  
+                "parameters": { "key":   {"type": "string", "values":[]},
+                                "value": {"type": "string", "values":[]}, 
+                                "param": {"type": "string", "values":[]}
+                              }, 
+                "required": ["key" ,"value" ], 
+                "tool":true
+            }
+         } ,  
+
+
+         "structure":{ 
+            "type": "function",
+            "function": {
+                "name": "structure",
+                "category": "types",
+                "description": "Creates a json compatable structure.", 
+                "example": "set v2 'sue';   structure start;  set 'name' =  v1  structure end;",  
+                "parameters": { "logic": {"type": "float", "values":["if", "also", "else"]},  
+                                 "action": {"type": "string", "values":["start", "end"]}
+                              }, 
+                "required": ["action"], 
+                "tool":true, 
+                "examples":{ 
+                        "triples":"set v2 'sue';   structure start;  set 'name' =  v1  structure end;", 
+                        "verbal" :"Create a structucture" ,
+                        "router" :[{"v":"", "s":"", "o":"", 
+                                    "call":{"v":"" , "o":"", "s":""}} ]
+                         },
+                "solutions":{"information":{ }
+                       }
+                }     
+            }   
+     }
+ 

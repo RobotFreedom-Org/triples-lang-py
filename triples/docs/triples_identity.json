@@ -1,0 +1,33 @@
+ {   
+
+         "identity":{ 
+            "type": "function",
+            "function": {
+                "name": "identity",
+                "description": "Controls  identity",
+                "example": "identity add sally;",  
+                "parameters": {  "cmd": {"type": "string", "values":["add","remove","alter"]},  
+                                 "value": {"type": "string", "values":[ ]} 
+                                }, 
+                "required": ["add", "remove" , "alter" ], 
+                "tool":false
+            } 
+         }   , 
+         "security":{ 
+            "type": "function",
+            "function": {
+                "name": "security",
+                "description": "Controls security and identity",
+                "example": "security user add ;",  
+                "parameters": {  "cmd": {"type": "string", "values":["add","remove","alter"]},  
+                                 "value": {"type": "string", "values":[ ]}  
+                                }, 
+                "required": ["cmd", "user" , "value" ], 
+                "tool":false
+            } 
+         }   
+
+}
+  
+       
+

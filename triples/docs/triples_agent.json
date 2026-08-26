@@ -1,0 +1,213 @@
+ {
+  
+         "initate":{ 
+            "type": "function",
+            "function": {
+                "name": "intiate",
+                "example":"intiate sleep;", 
+                "description": "Sets robot's current activity.",
+                "parameters": {"type":{ "type": "string", "values":["sleep", 
+                                                                    "reflexion", 
+                                                                    "security",
+                                                                    "sweep", 
+                                                                    "protocol"]} ,
+                                "file":{ "type": "string", "values":["listen",
+                                                                     "patrol",
+                                                                     "monitor",
+                                                                     "chat"]}
+                               } ,
+                "examples":{ 
+                        "triples":"intiate sleep;", 
+                        "verbal" :"Robot initiate sleep" ,
+                        "router" :[{"v":"control", "s":"me", "o":"sleep", 
+                                     "call":{"v":"intiate" , "o":"sleep", "s":""}} ]
+                         },
+                "solutions":{"power":{"low":"sleep"}, 
+                             "sound":{"unknown":"scan"},
+                             "reasoning":{"fails":"reflexion"},
+                             "security":{"breech":"security"}
+                           },
+                "required": ["type"], 
+                "tool":true
+            } 
+         } ,  
+  
+         "settings":{
+         "type": "function",
+            "function": {
+                "name": "settings",
+                "description": "Sets robots settings",
+                "category": "system",
+                "example": "set chat_settings rude;",
+                "expected_output": "chat_settings rude",
+                "parameters": {"action": {"type": "string",
+                                           "values":["get","set"]},
+                               "info": {"type": "string",
+                                         "values":["voice", "chat", "network", 
+                                                   "location", "mood", "chat_engine" , 
+                                                   "chat_settings", "time",
+                                                   "name", "personality"]} ,
+                               "value": {"type": "string",
+                                   "values":[]}
+                              }, 
+                "required": ["action", "info"] ,
+                "tool":false,
+                "examples":{ 
+                        "triples":"settings mood happy;", 
+                        "verbal" :"Robot settings mood happy" ,
+                        "router" :[{"v":"information", "s":"settings", "o":"personality", 
+                                    "call":{"v":"settings" , "o":"get", "s":"personality"}} ]
+                         },
+                "solutions":{"settings":{ "system":"date"}
+                           }
+                }
+         },     
+         "chat":{ 
+            "type": "function",
+            "function": {
+                "name": "chat",
+                "category": "communication",
+                "description": "interacts with language center",
+                "example": "chat 'how are you'@number_3;",
+                "parameters": { "prompt": {"type": "string", "values":[]}  },
+                "required": ["prompt"] ,
+                "tool":true,
+                "examples":{ 
+                        "triples":"chat 'how are you'@number_3;", 
+                        "verbal" :"Robot chat how are you at number_3" ,
+                        "router" :[{"v":"communication", "s":"", "o":"", 
+                                    "call":{"v":"chat" , "o":"", "s":""}} ]
+                         },
+                "solutions":{"communication":{ "chat":""}  
+                           }
+                } 
+         } ,     
+         "move":{ 
+            "type": "function",
+            "function": {
+                "name": "move",
+                "description": "Commands the robot to move.",
+                "example": "move forward;", 
+                "parameters": {  "direction": {"type": "string", 
+                                      "values": ["forward", "left", "right", "backwards"]} 
+                    },
+                "required": ["direction"],  
+                "tool":true
+            }
+         } ,     
+         "assign":{ 
+            "type": "function",
+            "function": {
+                "name": "assign",
+                "description": "Commands the robot to move.",
+                "example": "assign number_3;", 
+                "parameters": {  "direction": {"type": "string", 
+                                      "values": ["forward", "left", "right", "backwards"]}
+                    },
+                "required": ["direction"],  
+                "tool":true
+            }
+         } ,  
+         "dialogue":{ 
+            "type": "function",
+            "function": {
+                "name": "dialogue",
+                "description": "Runs a script.",
+                "example": "run myscript.csb;", 
+                "parameters": { "script": {"type": "string", "values":[]}},  
+                 "required": ["script"],  
+                "tool":true
+            }
+         } , 
+         "status":{ 
+            "type": "function",
+            "function": {
+                "name": "status",
+                "description": "Returns robots status",
+                "example": "status;", 
+                "parameters": {  "verbose": {"type": "bool", "values":[]} },  
+                "required": [], 
+                "tool":true
+            }
+         } ,   
+         "safty":{ 
+            "type": "function",
+            "function": {
+                "name": "safty",
+                "description": "Control safty overide.",
+                "example": "safty off;", 
+                "parameters": { "cmd": {"type": "string", "values":["off","on"]}}, 
+                "required": ["cmd"], 
+                "tool":false
+            }
+         } ,   
+         "halt":{ 
+            "type": "function",
+            "function": {
+                "name": "halt",
+                "example":"halt;", 
+                "description": "Halts a on going processess such as reasoning or sleep.",
+                "parameters": {"type":{ "type": "string", "values":["sleep", "reasoning", 
+                                                                    "security", "scan"]}  
+                               } ,
+                "examples":{ 
+                        "triples":"halt;", 
+                        "verbal" :"Robot halt sleep;" ,
+                        "router" :[{"v":"control", "s":"me", "o":"sleep", 
+                                     "call":{"v":"halt" , "o":"sleep", "s":""}} ]
+                         },
+                "required": [], 
+                "tool":true
+            } 
+         } ,   
+         "speak":{ 
+            "type": "function",
+            "function": {
+                "name": "speak",
+                "description": "a networked robot speaks message. Mostly for testing",
+                "example": "speak 'hello there';", 
+                "parameters": {"message":{ "type": "string", "values":[]}, 
+                               "global": { "type": "bool", "values":[]}
+                               }, 
+                "required": ["message"], 
+                "tool":true
+            }
+         } ,   
+         "test":{ 
+            "type": "function",
+            "function": {
+                "name": "test",
+                "description": "Test's robot .",
+                "example": "test sound;", 
+                "parameters": { "component": {"type": "string", "values":["sound","movment","lights","voice"]}}, 
+                "required": ["component"], 
+                "tool":true
+            }
+         } ,    
+         "nerves":{ 
+            "type": "function",
+            "function": {
+                "name": "nerves",
+                "description": "Can get and set a nerve signal .",
+                "example": "nerves get cmd:safty;", 
+                "parameters": { "cmd": {"type": "string", "values":["get","set" ]}, 
+                                "signal": {"type": "string", "values":[ ]}}, 
+                "required": ["cmd", "signal"], 
+                "tool":true
+            }
+         } ,       
+         "diagnostics":{  
+            "type": "function",
+            "function": {
+                "name": "diagnostics",
+                "description": "Runs a diagnostics.",
+                "example": "diagnostics;",  
+                "parameters": {   }, 
+                "required": [  ], 
+                "tool":true
+            } 
+         }      
+}
+ 
+  
+ 
