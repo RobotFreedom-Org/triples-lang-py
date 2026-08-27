@@ -5,6 +5,7 @@ Author: RobotFreedom.org
 License: MIT License  
 """ 
 
+from triples.utils.utils import dispatcher  ,replace_sep, split_ignoring_quotes
 from triples.core import   Triples  
 import argparse
 parser = argparse.ArgumentParser()
@@ -35,11 +36,11 @@ if __name__ == '__main__':
           obj, prep = "",""
 
           if cmds.find(" ") > -1: 
-              cmd, params =  triples.split_ignoring_quotes(cmds,1) #.split(' ', 1) 
+              cmd, params =   split_ignoring_quotes(cmds,1) #.split(' ', 1) 
               cmd = cmd.strip()
 
               if params.find(" ") > -1: 
-                  obj, prep =  triples.split_ignoring_quotes(params , 1) 
+                  obj, prep =  split_ignoring_quotes(params , 1) 
               else:
                   obj =  params.strip()
           else:
