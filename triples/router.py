@@ -1,7 +1,10 @@
 
 import json 
 
-from  .utils.utils import dispatcher  ,replace_sep, split_ignoring_quotes 
+try:
+    from utils.utils import dispatcher  ,replace_sep, split_ignoring_quotes 
+except:
+    from triples.utils.utils import dispatcher  ,replace_sep, split_ignoring_quotes 
 
 class Router():
 

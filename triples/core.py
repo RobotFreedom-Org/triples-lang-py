@@ -1,8 +1,29 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*- 
-""" 
-Author: RobotFreedom.org  
-License: MIT License  
+"""  
+ Description This package is a simple programming language for AI to communicate to other AIs and components. 
+ ---------------------------------------------------------------------------
+ Copyright (c) 2026 RobotFreedom.org 
+ Author: RobotFreedom.org  
+ License: MIT License
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
 """ 
 import glob
 import json
@@ -12,7 +33,7 @@ from  .triples_math import MathTriples
 from  .triples_string import StringTriples 
 from  .triples_logic import LogicTriples 
 from  .triples_flow import FlowTriples 
-from  .triples_functions import FunctionsTriples 
+from  .triples_routines import RoutinesTriples 
 from  .triples_temporal  import TemporalTriples 
 from  .triples_media import MediaTriples 
 from  .triples_file import FileTriples 
@@ -38,10 +59,13 @@ class CoreTriples():
             self.memory["variables"]   = {} 
             self.memory["variables_status"]   = {} 
             self.memory["scratch"]   = {} 
+            self.memory["routine"]   = {} 
             self.blocks        = {}
+            self.active_blocks = []  
             self.active_blocks = []  
 
 
+            
         def annotation(self: object, in_subjects :str = "", in_objects: str ="")-> list: 
             return None
         
@@ -92,6 +116,7 @@ class CoreTriples():
             """    
             if in_subjects in  self.memory["variables"]:
                 return self.memory["variables"][in_subjects]
+                 
             else:
                 return ""
 
@@ -128,8 +153,8 @@ class CoreTriples():
                  return in_subjects 
  
 class Triples(CoreTriples, MathTriples, StringTriples, LogicTriples, FlowTriples, 
-              FunctionsTriples, TemporalTriples, MediaTriples, FileTriples,
-              KBTriples, MiscTriples,MatrixTriples):
+              RoutinesTriples, TemporalTriples, MediaTriples, FileTriples,
+              KBTriples, MiscTriples ,MatrixTriples):
 
     def __init__(self : object,   **kwargs ):
         """
@@ -140,7 +165,7 @@ class Triples(CoreTriples, MathTriples, StringTriples, LogicTriples, FlowTriples
         StringTriples.__init__(self)
         LogicTriples.__init__(self)
         FlowTriples.__init__(self)
-        FunctionsTriples.__init__(self)
+        RoutinesTriples.__init__(self)
         TemporalTriples.__init__(self)
         MatrixTriples.__init__(self)
         
@@ -148,7 +173,12 @@ class Triples(CoreTriples, MathTriples, StringTriples, LogicTriples, FlowTriples
         FileTriples.__init__(self)
         MediaTriples.__init__(self)
         KBTriples.__init__(self)
-        MiscTriples.__init__(self)  
+        MiscTriples.__init__(self) 
+
+        self.process_param ={}
+        self.process_param["routine_name"] = ""
+        self.process_param["data_mapping"] = ""
+        self.process_param["format"] = ""
 
         self.docs = {}
 
@@ -215,8 +245,33 @@ class Triples(CoreTriples, MathTriples, StringTriples, LogicTriples, FlowTriples
                 cmds.append(obj =" not found")
 
         return sorted(cmds)
+     
+    def process(self: object, in_subjects :str = "", in_objects: str ="")-> str: 
 
-  #  @dispatcher
+        if in_subjects == "library":  
+           self.run(in_objects, "")
+
+        elif in_subjects == "routine": 
+            self.process_param["routine_name"] = in_objects
+
+        elif in_subjects == "map": 
+             self.process_param["data_mapping"] = in_objects
+
+        elif in_subjects == "format":
+             self.process_param["format"]       = in_objects 
+
+        elif in_subjects == "row":
+            row = json.loads(in_objects)
+
+            for i, key in enumerate(self.process_param["data_mapping"] ):
+                self.set("param_" + str(i), row[key]) 
+
+            result = self.routine("execute",  self.process_param["routine_name"] )
+
+            return result 
+ 
+        
+ 
     def run(self: object, in_subjects :str = "", in_objects: str ="")-> str: 
 
         if type(in_subjects) == dict:
@@ -236,7 +291,7 @@ class Triples(CoreTriples, MathTriples, StringTriples, LogicTriples, FlowTriples
             else:
                 return  res[-1]
         
-        elif  in_subjects.endswith(".trpls") is False:
+        elif  in_subjects.endswith(".trpls") is False and in_subjects.endswith(".trpl") is False:
  
             parts = split_ignoring_quotes(in_subjects.replace(";","")) 
 

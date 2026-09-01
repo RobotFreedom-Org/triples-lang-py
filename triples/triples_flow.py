@@ -39,8 +39,13 @@ class  FlowTriples(object):
                 self.blocks[self.s_if]["code"]        = [] 
                 self.active_blocks.append([self.s_if, "if"])
 
-            elif in_objects == "end": 
-                return self._end_if(in_subjects, in_objects)
+            elif in_objects == "end":  
+                blk_id = self.active_blocks[-1][0] 
+                if self.blocks[blk_id]["parent"] is None:
+                    return self._end_if(in_subjects, in_objects) 
+                else:  
+                     self.blocks[self.blocks[blk_id]["parent"]]["code"].append( ["run_block", blk_id ])  
+                     return None 
 
         elif in_subjects == "while":
             if in_objects == "start":
@@ -80,7 +85,7 @@ class  FlowTriples(object):
                 self.blocks[blk_id]["code"].append( [self._break, [self,  None, None ] ])  
              
 
-        return ""
+        return None
 
     def _break(self:object, in_subjects :str = "", in_objects: str ="", pos_1:str=None):  
         """
@@ -130,7 +135,7 @@ class  FlowTriples(object):
     
     def _end_process(self:object, in_subjects :str = "", in_objects: str =""):
         """
-        terminates a pprocess block
+        terminates a process block
         """
         s_if      =   self.active_blocks.pop()
         self.s_if = None  
@@ -171,20 +176,19 @@ class  FlowTriples(object):
             return res 
             
         else:
-             return "" 
+             return None 
         
     def _end_if(self:object, in_subjects :str = "", in_objects: str =""):
         """
         terminates a if block
         """  
         s_if      =   self.active_blocks.pop()
-        self.s_if = None
-         
+        self.s_if = None 
         if len(self.active_blocks) == 0:
              res = [] 
              for ipos, cmd in  enumerate(self.blocks[s_if[0]]["code"]): 
                  if ipos == 0: 
-                      _res =   cmd[0](self ,   cmd[1][1], cmd[1][2])  
+                      _res =   cmd[0](self ,   cmd[1][1], cmd[1][2])   
                       if _res != 1: 
                           break 
                  else:    
@@ -192,8 +196,6 @@ class  FlowTriples(object):
                       res.append(_res)
 
              if len(res) == 0:
-                 return ""
+                 return None
              else:
                  return res 
-        else:
-             return "" 

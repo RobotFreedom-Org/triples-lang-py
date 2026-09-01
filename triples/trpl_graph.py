@@ -143,20 +143,28 @@ class TrplGraph:
                      "o":self.r_v[o_id]}
         else:
             return {"s":"", "v":"", "o":""}
+ 
 
     def update(self, s, v, o, time_stamp, prop={}): 
         """updates an temporal symantic between s.v and o."""
-         
-        linksv = self.adj_list["v_o"][v]
-        linkso = self.adj_list["s_o"][s] 
+
+        linksv = []
+        linkso = []
+
+        if v in  self.adj_list:
+            linksv = self.adj_list["v_o"][v]
+
+        if s in  self.adj_list:
+            linkso = self.adj_list["s_o"][s] 
+            
         to_remove = []
         for link in linksv:
             if link in linkso:
                 to_remove.append(link)
 
         for link in to_remove:
-            self.add_temporal(s, "prior " + v, link, time_stamp, prop)
-            self.delete( v, link, "v_o") 
+            #self.add_temporal(s, "prior " + v, link, time_stamp, prop)
+            self.delete( v, link, "v_o")  
 
         self.add(s,v,o,prop)
  
