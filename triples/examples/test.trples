@@ -1,0 +1,15 @@
+
+research word enlightenment->research_1;
+set v1 na;
+flow if start;
+equal research_1 v1;
+echo "explain enlightenment" ;
+flow if end;
+flow if start;
+different research_1 v1;
+echo research_1 ;
+flow if end;
+
+
+
+ 

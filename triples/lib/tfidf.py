@@ -51,7 +51,6 @@ def cosine_similarity(vector1, vector2):
     dot_product = dot(vector1, vector2)
     norm_vector1 = vector_norm(vector1)
     norm_vector2 = vector_norm(vector2)
-    #print(dot_product ,  norm_vector1 ,  norm_vector2, dot_product / (norm_vector1 * norm_vector2) )  
     if norm_vector1 == 0 or norm_vector2 == 0:
         return 0.0 
     similarity = dot_product / (norm_vector1 * norm_vector2) 

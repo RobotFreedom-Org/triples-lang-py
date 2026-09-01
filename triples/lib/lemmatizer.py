@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*- 
+""" 
+Author: RobotFreedom.org  
+License: MIT License  
+""" 
 
 def simple_lemmatize(word: str) -> str:
     

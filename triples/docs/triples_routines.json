@@ -1,0 +1,24 @@
+  {  
+            "routine":{ 
+            "type": "function",
+            "function": {
+                "name": "routine",
+                "category": "system",
+                "description": "Creates a user routine.",
+                "example": "routine function my_function;",
+                "parameters": {"action": {"type": "string", "values":["create", "execute", "alter", "store"]},
+                               "name": {"type": "string", "values":[]}},
+                "required": ["name"] ,
+                "tool":false,
+                "examples":{ 
+                        "triples":"routine create my_function;", 
+                        "verbal" :"Robot function my_function" ,
+                        "router" :[{"v":"my_function", "s":"start", "o":"", 
+                                    "call":{"v":"exec" , "o":"filename", "s":""}} ]
+                         },
+                "solutions":{"system":{ "program":"start"}
+                           }
+              }
+         } 
+}
+  

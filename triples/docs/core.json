@@ -20,21 +20,21 @@
                            }
               }
          },  
-         "list":{ 
+         "memory":{ 
             "type": "function",
             "function": {
-                "name": "list",
-                "description": "Lists in memoery varibles ",
+                "name": "memory",
+                "description": "lists all variables in memory ",
                 "category": "core",
-                "example": "list  ;",
+                "example": "memory  ;",
                 "parameters": {"text": {"type": "string", "values":[]}  ,
                                "file": {"type": "string", "values":[]} },
                 "required": ["text"] ,
                 "tool":true,
                 "examples":{ 
-                        "triples":"list;", 
-                        "verbal" :"Robot list" ,
-                        "router" :[{"v":"list", "s":"", "o":"", 
+                        "triples":"memory;", 
+                        "verbal" :"Robot memory" ,
+                        "router" :[{"v":"memory", "s":"", "o":"", 
                                     "call":{"v":"echo" , "o":"data", "s":"filename"}} ]
                          },
                 "solutions":{"data":{ "storage":"file"}  
