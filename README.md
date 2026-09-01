@@ -61,16 +61,20 @@ Help provides a list of avaible functions.
 > help; 
 ```
 
+__NOTE__
+
+For the Python and CPP engine commands may or may not terminate with a ";" but for the Arduino engine all commands must end with a ";".
+
 You can also import Triples-Lang into a Python program and use it directly.
 
 ```bash 
 from triples.core import Triples 
 triples = Triples()  
     
-code = "create function params\n"   
+code = "routine create params\n"   
 code += 'echo "hello world"\n'  
-code += "create function end\n"    
-code += "execute params\n"    
+code += "routine create end\n"    
+code += "routine execute params\n"    
 res = triples.run(code.split("\n"))
 print( res) 
 
@@ -115,8 +119,7 @@ add myvar1 myvar2
 
 Flow control is define between a start and end. After the end statement to cocde block is executed unless the block is inside another block.
 
-```bash 
-flow Control 
+```bash  
 flow if start 
 less myvar1 myvar2 
 echo hello 
@@ -147,14 +150,14 @@ echo row;
 file close;
 ```
 
-User functions are run using the execute command. 
+User routines are run using the execute parameter. 
 
 ```bash 
-function myfunction;
+routine create myfunction;
 echo "hello world";
-function end;
+routine create end;
 
-execute myfunction;
+routine execute myfunction;
 ```
 
 You can set a varible to the output of a functions using the whense operator.
@@ -403,24 +406,24 @@ flow if end
 ```
 
 
-__FUNCTIONS__
+__ROUTINES__
 
-*create*
+*routine*
 
-Define functions using the create command,
+Define routines using the create directive.
 
 ```bash  
-create function my_funct 
+routine create my_funct 
 echo "Hello world!"
-create function  end
+routine create  end
 ```
 
 *execute*
 
-Run a function using the execute command
+Run a routine using the execute directive.
 
 ```bash  
-execute my_funct  
+routine execute my_funct  
 ```
 
 *create pass parameters*
@@ -430,8 +433,8 @@ Unlike other languages pass parameters are handled by create global values.
 ```bash  
 set param1 1 
 set param2 2  
-create function params 
+routine create params 
 add param1 param2  
-create function end    
-execute params   
+routine create end    
+routine execute params   
 '''
